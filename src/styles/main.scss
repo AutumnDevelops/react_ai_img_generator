@@ -1,0 +1,264 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@mixin flex(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex_2(){
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+@mixin background(){
+    background-position: center;
+    background-size: cover;
+}
+@mixin basic_button(){
+    border: none;
+    outline: none;
+    background: transparent;
+}
+$main_font:"Kanit", sans-serif;
+$light_gray: rgb(209, 209, 209);
+$dark_gray: rgb(43, 43, 43);
+$off_white:rgb(235, 235, 235);
+$orange:#e5ab9c9d;
+$main_orange:#ce7e6a;
+$dark_orange:#a16050;
+$orange_border:rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px, $orange 0px 2px 7px 0px;
+$dark_border:rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px, $orange 0px 2px 7px 0px;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-family: $main_font;
+    text-decoration: none;
+    list-style-type: none;
+}
+.App{
+    background: rgb(209, 209, 209);
+    min-height: 100vh
+}
+.App header{
+    @include flex();
+    width: 100vw;
+    height: 40vh;
+    position: relative;
+    @media(max-width:999px){
+        height: 33vh;
+    }
+}
+
+header #header_top{
+    background: url("../assets/bg.jpg");
+    @include background();
+    @include flex_2();
+    color: $light_gray;
+    width: 100vw;
+    height: 33vh;
+    position: absolute;
+    top: 0;
+    padding-top: 44px;
+    box-shadow: $orange_border;
+    @media(max-width:999px){
+        height: 25vh;
+    }
+}
+header #header_top h1{
+    font-size: 45px;
+    @media(max-width:999px){
+        font-size: 35px;
+    }
+}
+header form{
+    background: $off_white;
+    @include flex();
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    height: 40%;
+    width: 60%;
+    box-shadow: $orange_border;
+    border-radius: 7px;
+    @media(max-width:999px){
+        width: 75%;
+    }
+    @media(max-width:650px){
+        height: 50%;
+        width: 95%;
+        bottom: -20px;
+    }
+}
+
+header form div{
+    width: 90%;
+    padding: 15px;
+    box-shadow: $orange_border;
+    color: $dark_gray;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    @media(max-width:650px){
+        height: 90%;
+        box-shadow: none;
+        flex-direction: column;
+    }
+}
+header form div #id{
+    @include basic_button();
+    width: 800px;
+    @media(max-width:650px){
+        width: 360px;
+        box-shadow: $orange_border;
+        height: 50px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+header form div select{
+    @include basic_button();
+    box-shadow: $dark_border;
+    cursor: pointer;
+    padding: 5px;
+    @media(max-width:650px){
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: $main_orange;
+        color: white;
+        box-shadow: $orange_border;
+        padding: 7.5px;
+        border-radius: 5px;
+    }
+}
+
+header form div option{
+    margin-top: 15px;
+    padding: 5px 10px;
+    color: pointer;
+    &:hover{
+        background: $dark_orange;
+        box-shadow: $orange_border;
+        transition: 1s ease-in-out;
+        padding: 10px 5px;
+    }
+}
+
+header form div #gen_button{
+    @include basic_button();
+    background: $main_orange;
+    border-radius: 5px;
+    padding: 10px 5px;
+    margin-left: 15px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: $dark_border;
+    transition: 1s ease-in-out;
+    &:hover{
+        background: $dark_orange;
+        box-shadow: $orange_border;
+    }
+    @media(max-width:650px){
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+#generated_area{
+    @include flex_2();
+    width: 100vw;
+    padding: 25px;
+    @media(max-width:650px){
+        margin-top: 50px;
+    }
+}
+
+#generated_area h4{
+    color: $dark_gray;
+    font-size: 30px;
+    font-style: italic;
+}
+
+#generated_area #img_area{
+    @include flex();
+    flex-wrap: wrap;
+    overflow:auto;
+    margin: auto;
+}
+
+#img_area img{
+    box-shadow: $dark_border;
+    height: 400px;
+    width: 400px;
+    opacity: 0.9;
+    border-radius: 5px;
+    cursor: pointer;
+    @media(max-width:999px){
+        height: 375px;
+        width: 375px;
+    }
+    @media(max-width:650px){
+        height: 325px;
+        width: 325px;
+    }
+}
+
+#img_area .img{
+    position: relative;
+    margin: 10px;
+}
+
+#img_area .img a{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    background: $light_gray;
+    color: $dark_gray;
+    box-shadow: $orange_border;
+    transition: 1s ease-in-out;
+    cursor: pointer;
+    &:hover{
+        background: $dark_orange;
+        color: $off_white;
+    }
+}
+
+
+#loader {
+    @include flex();
+    height: 300px;
+  }
+  
+#loader .loading_dot{
+    width: 10px;
+    height: 10px;
+    margin: 6px;
+    border-radius: 50%;
+    background-color: $main_orange;
+    opacity: 0.2;
+    animation: Loading 0.75s infinite alternate;
+}
+
+@keyframes Loading {
+    to{
+      opacity: 0.5;
+      transform: translateY(-20px);
+    }
+  }
+  #loader .loading_dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+ #loader .loading_dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
