@@ -31,7 +31,7 @@ function App() {
         {
           headers:{
             'Content-Type': 'application/json',
-            'Authorization': `Bearer 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`
+            'Authorization': `Bearer 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`
           }
         });
     setGeneratedImages(response.data.data.map(item => item.url));
